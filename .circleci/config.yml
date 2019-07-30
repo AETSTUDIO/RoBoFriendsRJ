@@ -1,0 +1,21 @@
+version: 2
+jobs:
+  test1:
+    docker:
+      - image: circleci/node:10.16
+    steps:
+      - checkout
+      - run: echo "A first hello"
+  test2:
+    docker:
+      - image: circleci/node:10.16
+    steps:
+      - checkout
+      - run: echo "A second hello"
+workflows:
+  version: 2
+  test1_test2:
+    jobs:
+      - test1
+      - test2
+      
